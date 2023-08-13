@@ -1,0 +1,28 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/index.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.uni-block-react {
+  padding: 20px;
+  border-radius: 2px;
+  border: 1px solid #f1f1ff;
+  background-color: #d6d6d6;
+}
+.uni-block-react .mark-as-correct {
+  color: #ffd700;
+  position: relative;
+  top: -3px;
+  transition: transform 0.3s ease-out;
+}
+.uni-block-react .mark-as-correct:hover {
+  transform: scale(1.25) rotate(12deg);
+}
+.uni-block-react .attention-delete {
+  color: #ff0000;
+  position: relative;
+  top: -5px;
+}
+.uni-block-react .attention-delete:hover {
+  color: #c20000 !important;
+}
+
+/*# sourceMappingURL=index.css.map*/
