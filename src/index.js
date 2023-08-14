@@ -6,7 +6,15 @@ import {
 	FlexItem,
 	Button,
 	Icon,
+	PanelBody,
+	PanelRow,
+	ColorPicker,
 } from "@wordpress/components";
+import {
+	InspectorControls,
+	BlockControls,
+	AlignmentToolbar,
+} from "@wordpress/block-editor";
 
 (function () {
 	let locked = false;
@@ -42,6 +50,17 @@ wp.blocks.registerBlockType("ourplugin/uni-block-react", {
 		question: { type: "string" },
 		answers: { type: "array", default: [""] },
 		correctAnswer: { type: "number", default: undefined },
+		bgColor: { type: "string", default: "#ebebeb" },
+		theAlignment: { type: "string", default: "left" },
+	},
+	example: {
+		attributes: {
+			question: "What your name?",
+			answers: ["Adam", "Krzyś", "Kacper", "Mateusz"],
+			correctAnswer: 1,
+			theAlignment: "center",
+			bgColor: "#c4c4c4",
+		},
 	},
 	edit: EditComponent,
 	save: (props) => {
@@ -66,7 +85,26 @@ function EditComponent(props) {
 	}
 
 	return (
-		<div className="uni-block-react">
+		<div
+			className="uni-block-react"
+			style={{ backgroundColor: props.attributes.bgColor }}
+		>
+			<BlockControls>
+				<AlignmentToolbar
+					value={props.attributes.theAlignment}
+					onChange={(e) => props.setAttributes({ theAlignment: e })}
+				/>
+			</BlockControls>
+			<InspectorControls>
+				<PanelBody title="Background Color" initialOpen={true}>
+					<PanelRow>
+						<ColorPicker
+							color={props.attributes.bgColor}
+							onChangeComplete={(e) => props.setAttributes({ bgColor: e.hex })}
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
 			<TextControl
 				label="Question: "
 				value={props.attributes.question}
