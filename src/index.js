@@ -14,6 +14,7 @@ import {
 	InspectorControls,
 	BlockControls,
 	AlignmentToolbar,
+	useBlockProps,
 } from "@wordpress/block-editor";
 
 (function () {
@@ -69,6 +70,11 @@ wp.blocks.registerBlockType("ourplugin/uni-block-react", {
 });
 
 function EditComponent(props) {
+	const blockProps = useBlockProps({
+		className: "uni-block-react",
+		style: { backgroundColor: props.attributes.bgColor },
+	});
+
 	function deleteAnswer(index) {
 		const newAnswer = props.attributes.answers.filter(
 			(_, itemIndex) => index != itemIndex
@@ -85,10 +91,7 @@ function EditComponent(props) {
 	}
 
 	return (
-		<div
-			className="uni-block-react"
-			style={{ backgroundColor: props.attributes.bgColor }}
-		>
+		<div {...blockProps}>
 			<BlockControls>
 				<AlignmentToolbar
 					value={props.attributes.theAlignment}

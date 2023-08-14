@@ -186,6 +186,12 @@ wp.blocks.registerBlockType("ourplugin/uni-block-react", {
   }
 });
 function EditComponent(props) {
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
+    className: "uni-block-react",
+    style: {
+      backgroundColor: props.attributes.bgColor
+    }
+  });
   function deleteAnswer(index) {
     const newAnswer = props.attributes.answers.filter((_, itemIndex) => index != itemIndex);
     props.setAttributes({
@@ -203,10 +209,7 @@ function EditComponent(props) {
     });
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "uni-block-react",
-    style: {
-      backgroundColor: props.attributes.bgColor
-    }
+    ...blockProps
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
     value: props.attributes.theAlignment,
     onChange: e => props.setAttributes({
